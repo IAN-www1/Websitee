@@ -1,18 +1,3 @@
-/*-----------------------------------*\
-  #index.css
-\*-----------------------------------*/
-
-/**
- * copyright 2022 codewithsadee
- */
-
-
-
-
-
-/*-----------------------------------*\
-  #CUSTOM PROPERTY
-\*-----------------------------------*/
 
 :root {
 
@@ -2140,4 +2125,139 @@ textarea.input-field {
     left: 0;
   }
 
+}
+.category-selector {
+  margin: 20px 0; /* Space around the selector */
+  margin-bottom: 60px; /* Add space below the category selector */
+
+}
+
+.category-grid {
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center the items */
+  flex-wrap: wrap; /* Allow wrapping of items */
+}
+.grid-list {
+  margin-top: 20px; /* Add space above the grid list */
+}
+.category-item {
+  display: flex;
+  flex-direction: column; /* Stack image and name */
+  align-items: center; /* Center items */
+  margin: 10px; /* Space between items */
+  cursor: pointer; /* Pointer on hover */
+  text-align: center; /* Center text */
+  transition: transform 0.3s ease; /* Smooth transition for scaling */
+  display: inline-block; /* Ensure items are inline */
+  text-align: center; /* Center text below images */
+}
+
+.category-image {
+  width: 80px; /* Set image width */
+  height: 80px; /* Set image height */
+  border-radius: 50%; /* Make image circular */
+  object-fit: cover; /* Crop the image to fit */
+  border: 2px solid #ccc; /* Optional border around the image */
+  transition: transform 0.3s ease; /* Smooth transition for image scaling */
+}
+
+.category-name {
+  color: #f5f5dc; /* Beige color */
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.category-item.selected .category-name {
+  color: #ffffff; /* White color when selected */
+  transform: scale(1.1); /* Scale up when selected */
+  z-index: 1; /* Ensure it appears above other items */
+}
+.category-item.selected .category-image {
+  transform: scale(1.1); /* Scale up the image when selected */
+}
+.grid-item {
+
+  display: flex;
+  align-items: center; /* Center items in the flex column */
+}
+.title-3 {
+  max-width: 120px; /* Adjust the width as needed */
+  word-break: break-word;
+  /* You can add other styles here if needed */
+}
+.grid-item {
+  opacity: 1;
+  transition: opacity 0.3s ease; /* Keep opacity transition */
+}
+
+.grid-item.slide-in {
+  animation: slideIn 0.3s forwards; /* Slide in animation */
+}
+
+.grid-item.slide-out {
+  animation: slideOut 0.3s forwards; /* Slide out animation */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%); /* Start from the right */
+    opacity: 0; /* Start invisible */
+  }
+  to {
+    transform: translateX(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0); /* Start at original position */
+    opacity: 1; /* Fully visible */
+  }
+  to {
+    transform: translateX(-100%); /* Move to the left */
+    opacity: 0; /* Fade out */
+  }
+}
+/* Assuming you have this class already */
+.img-holder {
+  position: relative;
+  background-image: url('/assets/images/texture.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+.gallery-container {
+  max-width: 100%; /* Ensures the container doesn't exceed the form width */
+  overflow: hidden; /* Prevents content from overflowing outside the container */
+  padding: 20px;
+}
+
+.gallery {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap; /* Wrap images to a new line if they exceed container width */
+}
+
+.gallery img {
+  width: 100%; /* Make images responsive to container width */
+  max-width: 250px; /* Set a max width to prevent them from being too large */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+.circle-image {
+  width: 300px; /* Adjust the size to your liking */
+  height: 300px; /* Keep width and height equal to maintain circle */
+  border-radius: 50%; /* This makes the image a circle */
+  object-fit: contain; /* Ensures the entire image fits inside the circle */
+  overflow: hidden; /* Hide any overflow if needed */
+  background-color: transparent; /* Optional: set a background color if image has transparency */
+}
+.feature-card {
+ 
+  height: 100%; /* Fill the available height of the parent container */
+ 
 }

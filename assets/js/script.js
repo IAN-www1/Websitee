@@ -168,3 +168,50 @@ window.addEventListener("mousemove", function (event) {
   }
 
 });
+document.addEventListener("DOMContentLoaded", function() {
+  function filterItems(selectedCategory) {
+    const items = document.querySelectorAll(".grid-list li");
+
+    items.forEach(item => {
+      const itemCategory = item.getAttribute("data-category"); // Get category from data attribute
+
+      if (selectedCategory === "all" || itemCategory === selectedCategory) {
+        item.classList.remove("slide-out"); // Remove slide-out class
+        item.classList.add("slide-in"); // Add slide-in class
+
+        // Ensure the item is visible after sliding in
+        setTimeout(() => {
+          item.style.display = ""; // Reset display property
+        }, 300); // Match the duration of the transition
+      } else {
+        item.classList.remove("slide-in"); // Remove slide-in class
+        item.classList.add("slide-out"); // Add slide-out class
+
+        // After slide-out animation, hide the item
+        setTimeout(() => {
+          item.style.display = "none"; // Actually hide after transition
+        }, 300); // Match the duration of the transition
+      }
+    });
+  }
+
+  // Update the onclick event for each category item
+  const categoryItems = document.querySelectorAll(".category-item");
+  categoryItems.forEach(item => {
+    item.addEventListener("click", function() {
+      // Remove 'selected' class from all items
+      categoryItems.forEach(i => {
+        i.classList.remove("selected");
+      });
+      
+      // Add 'selected' class to the clicked item
+      this.classList.add("selected");
+
+      // Extract category from onclick attribute
+      const category = this.getAttribute("onclick").match(/'([^']+)'/)[1]; 
+      filterItems(category);
+    });
+  });
+});
+
+
